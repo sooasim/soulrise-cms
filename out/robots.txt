@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://soulrise-web-production.up.railway.app
+Host: https://soulrise-cms-production-fc73.up.railway.app
 
 # Sitemaps
-Sitemap: https://soulrise-web-production.up.railway.app/sitemap.xml
+Sitemap: https://soulrise-cms-production-fc73.up.railway.app/sitemap.xml

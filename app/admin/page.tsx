@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 export default function AdminRedirect() {
   const [cmsAdminUrl, setCmsAdminUrl] = useState('https://soulrise-cms-production-fc73.up.railway.app/admin');
   const [isRedirecting, setIsRedirecting] = useState(true);
+  const [countdown, setCountdown] = useState(3);
 
   useEffect(() => {
     // 환경변수에서 CMS 관리자 URL 가져오기
@@ -13,12 +14,19 @@ export default function AdminRedirect() {
       setCmsAdminUrl(envUrl);
     }
     
-    // 자동 리다이렉트 (3초 후)
-    const timer = setTimeout(() => {
-      if (typeof window !== 'undefined') {
-        window.location.href = cmsAdminUrl;
-      }
-    }, 3000);
+    // 카운트다운 타이머
+    const countdownTimer = setInterval(() => {
+      setCountdown(prev => {
+        if (prev <= 1) {
+          clearInterval(countdownTimer);
+          if (typeof window !== 'undefined') {
+            window.location.href = cmsAdminUrl;
+          }
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
 
     // 3초 후 리다이렉트 플래그 해제
     const redirectTimer = setTimeout(() => {
@@ -26,7 +34,7 @@ export default function AdminRedirect() {
     }, 3000);
 
     return () => {
-      clearTimeout(timer);
+      clearInterval(countdownTimer);
       clearTimeout(redirectTimer);
     };
   }, [cmsAdminUrl]);
@@ -51,7 +59,7 @@ export default function AdminRedirect() {
           🚀 SoulRise 관리자
         </h1>
         <p style={{ margin: 0, opacity: 0.9, fontSize: '16px' }}>
-          {isRedirecting ? 'CMS 관리자로 이동 중입니다...' : '리다이렉트가 완료되지 않았습니다.'}
+          {isRedirecting ? `CMS 관리자로 ${countdown}초 후 이동합니다...` : '리다이렉트가 완료되지 않았습니다.'}
         </p>
         {isRedirecting && (
           <div style={{ marginTop: '20px' }}>

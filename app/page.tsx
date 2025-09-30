@@ -37,24 +37,24 @@ export default async function Page() {
             </span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             <span className="block bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
               감정을 이해하는 AI
             </span>
-            <span className="block text-yellow-300 text-3xl md:text-4xl lg:text-5xl mt-2">
+            <span className="block text-yellow-300 text-2xl md:text-3xl lg:text-4xl mt-2">
               소울라이즈
             </span>
           </h1>
           
-          <p className="text-lg md:text-xl mb-10 max-w-4xl mx-auto leading-relaxed opacity-90">
+          <p className="text-base md:text-lg mb-8 max-w-3xl mx-auto leading-relaxed opacity-90">
             <span className="font-semibold">소울콜 · EORA · TAC-Link · 전술시계</span>
             <br />
             현장에서 검증된 AI 기술로 투자와 고객을 위한 통합 솔루션을 제공합니다
           </p>
           
-          <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center">
             <Link 
-              className="group px-8 py-4 rounded-2xl bg-white text-blue-600 font-semibold hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1" 
+              className="group px-6 py-3 rounded-xl bg-white text-blue-600 font-medium hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1" 
               href="/contact"
             >
               <span className="flex items-center gap-2">
@@ -65,7 +65,7 @@ export default async function Page() {
               </span>
             </Link>
             <Link 
-              className="group px-8 py-4 rounded-2xl border-2 border-white/50 text-white font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 backdrop-blur-sm" 
+              className="group px-6 py-3 rounded-xl border-2 border-white/50 text-white font-medium hover:bg-white hover:text-blue-600 transition-all duration-300 backdrop-blur-sm" 
               href="/ir"
             >
               <span className="flex items-center gap-2">
@@ -78,7 +78,7 @@ export default async function Page() {
           </div>
           
           {/* Stats */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
             {[
               { number: "99%", label: "정확도" },
               { number: "24/7", label: "모니터링" },
@@ -86,8 +86,8 @@ export default async function Page() {
               { number: "1M+", label: "분석 데이터" }
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-yellow-300 mb-1">{stat.number}</div>
-                <div className="text-sm opacity-80">{stat.label}</div>
+                <div className="text-xl md:text-2xl font-bold text-yellow-300 mb-1">{stat.number}</div>
+                <div className="text-xs md:text-sm opacity-80">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -95,18 +95,18 @@ export default async function Page() {
       </section>
 
       {/* Solutions Grid */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               핵심 솔루션
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               현장에서 검증된 AI 기술로 다양한 산업 분야의 문제를 해결합니다
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { 
                 title: "소울콜", 
@@ -144,32 +144,32 @@ export default async function Page() {
               <Link 
                 key={solution.title} 
                 href={solution.href} 
-                className="group block p-8 rounded-3xl bg-white hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+                className="group block p-6 rounded-2xl bg-white hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100"
               >
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${solution.color} flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${solution.color} flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   {solution.icon}
                 </div>
                 
-                <h3 className="text-2xl font-bold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
                   {solution.title}
                 </h3>
                 
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-gray-600 mb-3 text-sm leading-relaxed">
                   {solution.description}
                 </p>
                 
-                <div className="space-y-2 mb-6">
+                <div className="space-y-1 mb-4">
                   {solution.features.map((feature, index) => (
-                    <div key={index} className="flex items-center text-sm text-gray-500">
-                      <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></div>
+                    <div key={index} className="flex items-center text-xs text-gray-500">
+                      <div className="w-1 h-1 bg-blue-400 rounded-full mr-2"></div>
                       {feature}
                     </div>
                   ))}
                 </div>
                 
-                <div className="flex items-center text-blue-600 font-semibold group-hover:translate-x-2 transition-transform duration-300">
+                <div className="flex items-center text-blue-600 font-medium text-sm group-hover:translate-x-2 transition-transform duration-300">
                   자세히 보기 
-                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </div>
@@ -180,14 +180,14 @@ export default async function Page() {
       </section>
 
       {/* EORA Integration Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-6">eora.life 상담 연동</h2>
-          <p className="mt-4 text-gray-700 mb-8 max-w-3xl mx-auto">
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-4">eora.life 상담 연동</h2>
+          <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
             EORA 기반 AI 상담 플랫폼으로 감정 분석과 코칭을 경험하세요.
           </p>
           <a 
-            className="inline-block px-8 py-4 rounded-xl bg-black text-white font-medium hover:bg-gray-800 transition-colors" 
+            className="inline-block px-6 py-3 rounded-lg bg-black text-white font-medium hover:bg-gray-800 transition-colors" 
             href="https://www.eora.life" 
             target="_blank"
             rel="noopener noreferrer"
@@ -198,42 +198,42 @@ export default async function Page() {
       </section>
 
       {/* Latest News Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-semibold text-center mb-12">최신 소식</h2>
+      <section className="py-12 bg-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-semibold text-center mb-8">최신 소식</h2>
           
           {cmsError ? (
-            <div className="text-center mb-12 p-6 bg-red-50 border border-red-200 rounded-lg">
+            <div className="text-center mb-8 p-4 bg-red-50 border border-red-200 rounded-lg">
               <p className="text-red-600 mb-2">CMS 연결 오류가 발생했습니다.</p>
               <p className="text-sm text-red-500">오류: {cmsError}</p>
               <p className="text-sm text-gray-500 mt-2">CMS URL: {process.env.NEXT_PUBLIC_CMS_URL}</p>
             </div>
           ) : latestPosts.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
               {latestPosts.map((post: any) => {
                 const attributes = post.attributes;
                 return (
                   <Link 
                     key={post.id}
                     href={`/blog/${attributes.slug}`}
-                    className="p-6 rounded-2xl border hover:shadow-lg transition-shadow bg-white group"
+                    className="p-4 rounded-xl border hover:shadow-lg transition-shadow bg-white group"
                   >
                     {attributes.coverImage?.data && (
-                      <div className="mb-4 overflow-hidden rounded-lg">
+                      <div className="mb-3 overflow-hidden rounded-lg">
                         <img 
                           src={attributes.coverImage.data.attributes.url}
                           alt={attributes.title}
-                          className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
+                          className="w-full h-32 object-cover group-hover:scale-105 transition-transform"
                         />
                       </div>
                     )}
-                    <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-lg font-semibold mb-2 group-hover:text-blue-600 transition-colors">
                       {attributes.title}
                     </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-3">
+                    <p className="text-gray-600 mb-3 text-sm line-clamp-2">
                       {attributes.excerpt}
                     </p>
-                    <div className="text-sm text-gray-500">
+                    <div className="text-xs text-gray-500">
                       {new Date(attributes.publishedAt).toLocaleDateString('ko-KR')}
                     </div>
                   </Link>
@@ -241,8 +241,8 @@ export default async function Page() {
               })}
             </div>
           ) : (
-            <div className="text-center mb-12">
-              <div className="p-6 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="text-center mb-8">
+              <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
                 <p className="text-blue-600 mb-2">CMS에서 최신 소식을 불러오는 중...</p>
                 <p className="text-sm text-gray-500">CMS URL: {process.env.NEXT_PUBLIC_CMS_URL || '설정되지 않음'}</p>
                 <p className="text-sm text-gray-500 mt-2">아직 게시된 포스트가 없거나 CMS 설정이 필요합니다.</p>
@@ -253,7 +253,7 @@ export default async function Page() {
           <div className="text-center">
             <Link 
               href="/blog"
-              className="inline-block px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:from-blue-700 hover:to-purple-700 transition-all"
+              className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:from-blue-700 hover:to-purple-700 transition-all"
             >
               모든 블로그 & 뉴스 보기
             </Link>
