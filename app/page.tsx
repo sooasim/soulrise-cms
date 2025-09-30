@@ -2,7 +2,7 @@ import Link from "next/link";
 import { fetchPublic } from "@/lib/api";
 
 export default async function Page() {
-  // CMS에서 최신 블로그 포스트 가져오기
+  // CMS에서 최신 블로그 포스트 가져오기 - CACHE_FIX_2025_NEW
   let latestPosts = [];
   let cmsError = null;
   
@@ -19,6 +19,7 @@ export default async function Page() {
     console.error("CMS 연결 실패:", error);
     cmsError = error?.message || "알 수 없는 오류";
   }
+
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
@@ -32,7 +33,7 @@ export default async function Page() {
         
         <div className="relative max-w-4xl mx-auto px-4">
           <div className="mb-6">
-            <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium">
+            <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
               🚀 혁신적인 AI 솔루션
             </span>
           </div>
@@ -46,7 +47,7 @@ export default async function Page() {
             </span>
           </h1>
           
-          <p className="text-sm md:text-base mb-6 max-w-2xl mx-auto leading-relaxed opacity-90">
+          <p className="text-sm md:text-base mb-6 max-w-3xl mx-auto leading-relaxed opacity-90">
             <span className="font-semibold">소울콜 · EORA · TAC-Link · 전술시계</span>
             <br />
             현장에서 검증된 AI 기술로 투자와 고객을 위한 통합 솔루션을 제공합니다
@@ -54,7 +55,7 @@ export default async function Page() {
           
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center items-center">
             <Link 
-              className="group px-5 py-2 rounded-lg bg-white text-blue-600 font-medium hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1" 
+              className="group px-5 py-2 rounded-xl bg-white text-blue-600 font-medium hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1" 
               href="/contact"
             >
               <span className="flex items-center gap-2">
@@ -65,7 +66,7 @@ export default async function Page() {
               </span>
             </Link>
             <Link 
-              className="group px-5 py-2 rounded-lg border-2 border-white/50 text-white font-medium hover:bg-white hover:text-blue-600 transition-all duration-300 backdrop-blur-sm" 
+              className="group px-5 py-2 rounded-xl border-2 border-white/50 text-white font-medium hover:bg-white hover:text-blue-600 transition-all duration-300 backdrop-blur-sm" 
               href="/ir"
             >
               <span className="flex items-center gap-2">
@@ -98,7 +99,7 @@ export default async function Page() {
       <section className="py-12 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               핵심 솔루션
             </h2>
             <p className="text-base text-gray-600 max-w-2xl mx-auto">
@@ -144,9 +145,9 @@ export default async function Page() {
               <Link 
                 key={solution.title} 
                 href={solution.href} 
-                className="group block p-4 rounded-xl bg-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-100"
+                className="group block p-4 rounded-2xl bg-white hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100"
               >
-                <div className={`w-10 h-10 rounded-lg bg-gradient-to-r ${solution.color} flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-10 h-10 rounded-xl bg-gradient-to-r ${solution.color} flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   {solution.icon}
                 </div>
                 

@@ -24,6 +24,11 @@ const nextConfig = {
   // 강제 캐시 무효화
   generateBuildId: async () => {
     return `build-${Date.now()}`;
+  },
+  // 캐시 완전 비활성화
+  onDemandEntries: {
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 2,
   }
 }
 
