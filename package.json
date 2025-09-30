@@ -11,7 +11,7 @@
         "dev": "next dev",
         "dev:strapi": "strapi develop",
         "develop": "strapi develop",
-        "start": "npx http-server@latest out -p ${PORT:-3000} -a 0.0.0.0",
+        "start": "node server.js",
         "start:strapi": "node start.js",
         "postinstall": "npm run build",
         "strapi": "strapi",
