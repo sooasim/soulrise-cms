@@ -11,7 +11,7 @@
         "dev": "next dev",
         "dev:strapi": "strapi develop",
         "develop": "strapi develop",
-        "start": "npx serve@latest out -p $PORT",
+        "start": "npx http-server@latest out -p ${PORT:-3000} -a 0.0.0.0",
         "start:strapi": "node start.js",
         "postinstall": "npm run build",
         "strapi": "strapi",
@@ -45,5 +45,9 @@
     "strapi": {
         "uuid": "f04e71b8-c532-4431-99c7-3e84b8ebe180",
         "installId": "086750069c62f1940351a4dcd5dac452a210c08fcbac5b167373a837e1ca7f2a"
+    },
+    "railway": {
+        "healthcheckPath": "/health.html",
+        "healthcheckTimeout": 300
     }
 }
