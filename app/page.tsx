@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { fetchPublic } from "@/lib/api";
+import { fetchPublic } from "../lib/api";
 
 export default async function Page() {
   // CMS에서 최신 블로그 포스트 가져오기 - CACHE_FIX_2025_NEW

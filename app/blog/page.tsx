@@ -1,4 +1,4 @@
-import { fetchPublic } from "@/lib/api";
+import { fetchPublic } from "../../lib/api";
 
 export default async function BlogList() {
   const data = await fetchPublic("/api/posts", { populate: "*" });

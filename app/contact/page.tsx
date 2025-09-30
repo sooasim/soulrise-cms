@@ -1,4 +1,4 @@
-import { fetchPublic } from "@/lib/api";
+import { fetchPublic } from "../../lib/api";
 
 async function getPage(slug: string) {
   const data = await fetchPublic("/api/pages", {
