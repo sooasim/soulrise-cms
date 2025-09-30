@@ -11,7 +11,7 @@
         "dev": "next dev",
         "dev:strapi": "strapi develop",
         "develop": "strapi develop",
-        "start": "next start",
+        "start": "npx serve@latest out -p $PORT",
         "start:strapi": "node start.js",
         "postinstall": "npm run build",
         "strapi": "strapi",
@@ -29,7 +29,8 @@
         "react-dom": "^18.0.0",
         "react-router-dom": "^6.0.0",
         "styled-components": "^6.0.0",
-        "axios": "^1.6.0"
+        "axios": "^1.6.0",
+        "serve": "^14.2.0"
     },
     "devDependencies": {
         "@types/node": "^20",

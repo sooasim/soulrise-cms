@@ -1,14 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
-  experimental: {
-    appDir: true,
-  },
+  output: 'export',
+  trailingSlash: true,
   images: {
     unoptimized: true
   },
   env: {
-    NEXT_PUBLIC_CMS_URL: process.env.NEXT_PUBLIC_CMS_URL,
+    NEXT_PUBLIC_CMS_URL: process.env.NEXT_PUBLIC_CMS_URL || 'https://soulrise-cms-production.up.railway.app',
   }
 }
 

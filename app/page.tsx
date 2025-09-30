@@ -1,10 +1,8 @@
 // app/page.tsx
-import { fetchPublic } from "@/lib/api";
 import Link from "next/link";
+import BlogPosts from "@/components/BlogPosts";
 
-export default async function HomePage() {
-    const data = await fetchPublic("/api/posts", { populate: "*", "pagination[limit]": 3 });
-    const posts = Array.isArray(data?.data) ? data.data : [];
+export default function HomePage() {
 
     return (
         <div style={{
@@ -63,59 +61,27 @@ export default async function HomePage() {
                     </div>
                 </section>
 
-                {posts.length > 0 && (
-                    <section style={{
-                        marginBottom: '60px'
-                    }}>
-                        <h2 style={{ color: '#333', marginBottom: '30px' }}>최신 소식</h2>
-                        <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                            gap: '20px'
-                        }}>
-                            {posts.map((post: any) => {
-                                const a = post.attributes || {};
-                                return (
-                                    <Link
-                                        key={post.id}
-                                        href={`/blog/${a.slug}`}
-                                        style={{
-                                            padding: '20px',
-                                            border: '1px solid #e0e0e0',
-                                            borderRadius: '10px',
-                                            boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-                                            textDecoration: 'none',
-                                            color: 'inherit',
-                                            display: 'block'
-                                        }}
-                                    >
-                                        <h3 style={{ color: '#667eea', marginBottom: '10px' }}>
-                                            {a.title || "제목 없음"}
-                                        </h3>
-                                        <p style={{ color: '#666', fontSize: '14px' }}>
-                                            {a.excerpt || "내용 미리보기가 없습니다."}
-                                        </p>
-                                    </Link>
-                                );
-                            })}
-                        </div>
-                        <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                            <Link
-                                href="/blog"
-                                style={{
-                                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                                    color: 'white',
-                                    padding: '12px 24px',
-                                    borderRadius: '25px',
-                                    textDecoration: 'none',
-                                    fontSize: '16px'
-                                }}
-                            >
-                                모든 글 보기
-                            </Link>
-                        </div>
-                    </section>
-                )}
+                <section style={{
+                    marginBottom: '60px'
+                }}>
+                    <h2 style={{ color: '#333', marginBottom: '30px' }}>최신 소식</h2>
+                    <BlogPosts limit={3} />
+                    <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                        <Link
+                            href="/blog"
+                            style={{
+                                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                                color: 'white',
+                                padding: '12px 24px',
+                                borderRadius: '25px',
+                                textDecoration: 'none',
+                                fontSize: '16px'
+                            }}
+                        >
+                            모든 글 보기
+                        </Link>
+                    </div>
+                </section>
 
                 <section style={{
                     textAlign: 'center',
