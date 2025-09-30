@@ -1,0 +1,9 @@
+# Next.js 빌드에서 제외할 Strapi 파일들
+config/
+src/
+node_modules/
+.env*
+package*.json
+railway.json
+Dockerfile
+*.log

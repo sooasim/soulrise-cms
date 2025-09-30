@@ -1,0 +1,8 @@
+# Next.js 빌드에서 제외할 파일들
+strapi-backend/
+config/
+*.env*
+railway.json
+Dockerfile
+RAILWAY-*.md
+.github/
