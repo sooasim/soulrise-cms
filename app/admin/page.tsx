@@ -40,25 +40,25 @@ export default function AdminRedirect() {
   }, [cmsAdminUrl]);
 
   return (
-    <main style={{
-      padding: '40px',
-      textAlign: 'center',
-      maxWidth: '600px',
-      margin: '0 auto',
-      fontFamily: 'system-ui, -apple-system, sans-serif'
-    }}>
+         <main style={{
+           padding: '20px',
+           textAlign: 'center',
+           maxWidth: '500px',
+           margin: '0 auto',
+           fontFamily: 'system-ui, -apple-system, sans-serif'
+         }}>
       <div style={{
         background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         color: 'white',
-        padding: '30px',
-        borderRadius: '15px',
-        marginBottom: '30px',
+        padding: '20px',
+        borderRadius: '12px',
+        marginBottom: '20px',
         boxShadow: '0 4px 20px rgba(102, 126, 234, 0.3)'
       }}>
-        <h1 style={{ margin: '0 0 15px 0', fontSize: '28px', fontWeight: '600' }}>
+        <h1 style={{ margin: '0 0 10px 0', fontSize: '22px', fontWeight: '600' }}>
           🚀 SoulRise 관리자
         </h1>
-        <p style={{ margin: 0, opacity: 0.9, fontSize: '16px' }}>
+        <p style={{ margin: 0, opacity: 0.9, fontSize: '14px' }}>
           {isRedirecting ? `CMS 관리자로 ${countdown}초 후 이동합니다...` : '리다이렉트가 완료되지 않았습니다.'}
         </p>
         {isRedirecting && (
