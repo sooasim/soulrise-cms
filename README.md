@@ -1,61 +1,43 @@
-# 🚀 Getting started with Strapi
+# SoulRise 웹사이트
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+SoulRise 공식 웹사이트입니다.
 
-### `develop`
+## 기술 스택
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+- **Next.js 14**: React 프레임워크
+- **TypeScript**: 타입 안전성
+- **Tailwind CSS**: 스타일링 (선택사항)
 
-```
-npm run develop
-# or
-yarn develop
-```
+## 개발
 
-### `start`
+```bash
+# 의존성 설치
+npm install
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+# 개발 서버 실행
+npm run dev
 
-```
-npm run start
-# or
-yarn start
-```
-
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
+# 빌드
 npm run build
-# or
-yarn build
+
+# 정적 파일 서빙
+npm start
 ```
 
-## ⚙️ Deployment
+## 배포
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+이 프로젝트는 Railway에서 자동으로 배포됩니다.
+
+### 환경 변수
+
+- `NEXT_PUBLIC_CMS_URL`: Strapi CMS URL
+
+## 구조
 
 ```
-yarn strapi deploy
+├── app/                 # Next.js App Router
+├── components/          # React 컴포넌트
+├── lib/                 # 유틸리티 함수
+├── public/              # 정적 파일
+└── out/                 # 빌드된 정적 파일
 ```
-
-## 📚 Learn more
-
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
-
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
