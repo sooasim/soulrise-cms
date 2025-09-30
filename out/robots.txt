@@ -1,3 +1,9 @@
-# To prevent search engines from seeing the site altogether, uncomment the next two lines:
-# User-Agent: *
-# Disallow: /
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://soulrise-web-production.up.railway.app
+
+# Sitemaps
+Sitemap: https://soulrise-web-production.up.railway.app/sitemap.xml

@@ -1,5 +1,4 @@
 import { fetchPublic } from "@/lib/api";
-import Link from "next/link";
 
 export default async function BlogList() {
   const data = await fetchPublic("/api/posts", { populate: "*" });
@@ -27,30 +26,36 @@ export default async function BlogList() {
           {posts.map((post: any) => {
             const attributes = post.attributes;
             return (
-              <Link 
+              <div 
                 key={post.id} 
-                href={`/blog/${attributes.slug}`} 
                 className="block group"
               >
                 <article className="bg-white rounded-xl border hover:shadow-lg transition-shadow p-6 h-full">
                   <div className="mb-4">
-                    <h3 className="text-xl font-semibold group-hover:text-blue-600 transition-colors line-clamp-2">
+                    <h3 className="text-xl font-semibold text-blue-600">
                       {attributes.title}
                     </h3>
                   </div>
                   
                   {attributes.excerpt && (
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                    <p className="text-gray-600 text-sm mb-4">
                       {attributes.excerpt}
                     </p>
                   )}
                   
-                  <div className="flex items-center justify-between text-sm text-gray-500">
-                    <span>자세히 보기</span>
-                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  {attributes.content && (
+                    <div className="text-gray-700 text-sm mb-4">
+                      {attributes.content.length > 150 
+                        ? attributes.content.substring(0, 150) + '...' 
+                        : attributes.content}
+                    </div>
+                  )}
+                  
+                  <div className="text-sm text-gray-500">
+                    <span>CMS에서 관리되는 콘텐츠</span>
                   </div>
                 </article>
-              </Link>
+              </div>
             );
           })}
         </div>
