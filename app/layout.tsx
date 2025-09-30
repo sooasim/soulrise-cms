@@ -1,5 +1,9 @@
 // app/layout.tsx
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: 'SoulRise - 영혼의 상승',
@@ -20,21 +24,7 @@ export default function RootLayout({
                     href="https://www.eora.life"
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{
-                        position: "fixed",
-                        right: 20,
-                        bottom: 20,
-                        background: "#111",
-                        color: "#fff",
-                        padding: "12px 16px",
-                        borderRadius: 24,
-                        textDecoration: "none",
-                        fontSize: "14px",
-                        fontWeight: "500",
-                        boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-                        zIndex: 1000,
-                        transition: "all 0.3s ease"
-                    }}
+                    className="fixed right-5 bottom-5 bg-gray-900 text-white px-4 py-3 rounded-full shadow-lg z-50 transition-transform hover:scale-110"
                 >
                     eora 상담
                 </a>
