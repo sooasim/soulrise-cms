@@ -8,14 +8,15 @@ Railway 웹 서비스 Variables 탭에서 다음 환경 변수들을 설정해�
 ```
 NODE_ENV=production
 NEXT_PUBLIC_CMS_URL=https://soulrise-cms-production.up.railway.app
-SITE_URL=https://soulrise-web-production.up.railway.app
+PORT=3000
 ```
 
 ### 선택적 환경 변수
 ```
 HOST=0.0.0.0
-PORT=3000
 ```
+
+**중요**: Railway에서 Next.js는 기본적으로 포트 3000을 사용합니다.
 
 ## Railway에서 설정하는 방법
 
