@@ -11,7 +11,7 @@
         "dev": "next dev",
         "dev:strapi": "strapi develop",
         "develop": "strapi develop",
-        "start": "node simple-server.js",
+        "start": "node static-server.js",
         "start:strapi": "node start.js",
         "postinstall": "npm run build",
         "strapi": "strapi",
