@@ -1,188 +1,112 @@
-// app/page.tsx
-import BlogPosts from "@/components/BlogPosts";
-// import Link from "next/link";
+import Link from "next/link";
 
-export default function HomePage() {
-
-    return (
-        <div style={{
-            fontFamily: 'Arial, sans-serif',
-            maxWidth: '1200px',
-            margin: '0 auto',
-            padding: '20px'
-        }}>
-            {/* 네비게이션 메뉴 */}
-            <nav style={{
-                background: 'white',
-                padding: '15px 0',
-                marginBottom: '20px',
-                borderRadius: '10px',
-                boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-                border: '1px solid #e9ecef'
-            }}>
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    gap: '30px',
-                    flexWrap: 'wrap'
-                }}>
-                    <a href="/" style={{
-                        color: '#667eea',
-                        textDecoration: 'none',
-                        fontWeight: '500',
-                        padding: '8px 16px',
-                        borderRadius: '6px',
-                        transition: 'background 0.2s'
-                    }}>홈</a>
-                    <a href="/blog" style={{
-                        color: '#667eea',
-                        textDecoration: 'none',
-                        fontWeight: '500',
-                        padding: '8px 16px',
-                        borderRadius: '6px',
-                        transition: 'background 0.2s'
-                    }}>블로그</a>
-                    <a href="/about" style={{
-                        color: '#667eea',
-                        textDecoration: 'none',
-                        fontWeight: '500',
-                        padding: '8px 16px',
-                        borderRadius: '6px',
-                        transition: 'background 0.2s'
-                    }}>회사 소개</a>
-                    <a href="/contact" style={{
-                        color: '#667eea',
-                        textDecoration: 'none',
-                        fontWeight: '500',
-                        padding: '8px 16px',
-                        borderRadius: '6px',
-                        transition: 'background 0.2s'
-                    }}>문의하기</a>
-                    <a href="/ir" style={{
-                        color: '#667eea',
-                        textDecoration: 'none',
-                        fontWeight: '500',
-                        padding: '8px 16px',
-                        borderRadius: '6px',
-                        transition: 'background 0.2s'
-                    }}>IR</a>
-                    <a href="/admin" style={{
-                        color: '#764ba2',
-                        textDecoration: 'none',
-                        fontWeight: '500',
-                        padding: '8px 16px',
-                        borderRadius: '6px',
-                        transition: 'background 0.2s',
-                        background: '#f8f9fa'
-                    }}>관리자</a>
-                </div>
-            </nav>
-
-            <header style={{
-                textAlign: 'center',
-                padding: '60px 0',
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                color: 'white',
-                borderRadius: '10px',
-                marginBottom: '40px'
-            }}>
-                <h1 style={{ fontSize: '3rem', margin: '0' }}>SoulRise</h1>
-                <p style={{ fontSize: '1.2rem', margin: '10px 0 0 0' }}>영혼의 상승을 위한 여정</p>
-            </header>
-
-            <main>
-                <section style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                    gap: '30px',
-                    marginBottom: '60px'
-                }}>
-                    <div style={{
-                        padding: '30px',
-                        border: '1px solid #e0e0e0',
-                        borderRadius: '10px',
-                        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
-                    }}>
-                        <h2 style={{ color: '#667eea' }}>우리의 미션</h2>
-                        <p>영혼의 상승과 개인적 성장을 위한 의미 있는 여정을 함께합니다.</p>
-                    </div>
-
-                    <div style={{
-                        padding: '30px',
-                        border: '1px solid #e0e0e0',
-                        borderRadius: '10px',
-                        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
-                    }}>
-                        <h2 style={{ color: '#667eea' }}>서비스</h2>
-                        <p>개인 맞춤형 영성 지도와 성장 프로그램을 제공합니다.</p>
-                    </div>
-
-                    <div style={{
-                        padding: '30px',
-                        border: '1px solid #e0e0e0',
-                        borderRadius: '10px',
-                        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
-                    }}>
-                        <h2 style={{ color: '#667eea' }}>연락처</h2>
-                        <p>여러분의 여정에 함께하고 싶습니다. 언제든지 연락주세요.</p>
-                    </div>
-                </section>
-
-                <section style={{
-                    marginBottom: '60px'
-                }}>
-                    <h2 style={{ color: '#333', marginBottom: '30px' }}>최신 소식</h2>
-                    <BlogPosts limit={3} />
-                    <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                        <div
-                            style={{
-                                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                                color: 'white',
-                                padding: '12px 24px',
-                                borderRadius: '25px',
-                                fontSize: '16px',
-                                display: 'inline-block'
-                            }}
-                        >
-                            최신 소식
-                        </div>
-                    </div>
-                </section>
-
-                <section style={{
-                    textAlign: 'center',
-                    padding: '40px',
-                    background: '#f8f9fa',
-                    borderRadius: '10px'
-                }}>
-                    <h2 style={{ color: '#333' }}>지금 시작하세요</h2>
-                    <p style={{ fontSize: '1.1rem', marginBottom: '30px' }}>
-                        SoulRise와 함께하는 영혼의 상승 여정
-                    </p>
-                    <button style={{
-                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                        color: 'white',
-                        border: 'none',
-                        padding: '15px 30px',
-                        fontSize: '1.1rem',
-                        borderRadius: '25px',
-                        cursor: 'pointer',
-                        transition: 'transform 0.2s'
-                    }}>
-                        시작하기
-                    </button>
-                </section>
-            </main>
-
-            <footer style={{
-                textAlign: 'center',
-                padding: '40px 0',
-                borderTop: '1px solid #e0e0e0',
-                marginTop: '60px',
-                color: '#666'
-            }}>
-                <p>&copy; 2024 SoulRise. All rights reserved.</p>
-            </footer>
+export default async function Page() {
+  return (
+    <main className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative py-24 text-center bg-gradient-to-br from-blue-600 to-purple-700 text-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h1 className="text-4xl md:text-6xl font-semibold mb-6">
+            감정을 이해하는 AI, 현장에서 가치를 증명합니다
+          </h1>
+          <p className="mt-6 text-lg mb-10 max-w-3xl mx-auto">
+            소울콜 · EORA · TAC-Link · 전술시계 — 투자와 고객을 위한 통합 홈페이지
+          </p>
+          <div className="mt-10 flex gap-4 justify-center flex-wrap">
+            <Link 
+              className="px-6 py-3 rounded-xl bg-white text-blue-600 font-medium hover:bg-gray-100 transition-colors" 
+              href="/contact"
+            >
+              데모 신청
+            </Link>
+            <Link 
+              className="px-6 py-3 rounded-xl border-2 border-white text-white hover:bg-white hover:text-blue-600 transition-colors" 
+              href="/ir"
+            >
+              투자 자료
+            </Link>
+          </div>
         </div>
-    );
+      </section>
+
+      {/* Solutions Grid */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-semibold text-center mb-12">핵심 솔루션</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { 
+                title: "소울콜", 
+                description: "AI 음성 상담·세일즈", 
+                href: "/solutions/soulcall",
+                icon: "🎤"
+              },
+              { 
+                title: "EORA", 
+                description: "감정 기반 GAI", 
+                href: "/solutions/eora",
+                icon: "🧠"
+              },
+              { 
+                title: "TAC-Link", 
+                description: "스마트폰 전술 통신", 
+                href: "/solutions/tac-link",
+                icon: "📱"
+              },
+              { 
+                title: "전술시계", 
+                description: "임무 복귀·보안", 
+                href: "/products/tmw",
+                icon: "⌚"
+              },
+            ].map((solution) => (
+              <Link 
+                key={solution.title} 
+                href={solution.href} 
+                className="p-6 rounded-2xl border hover:shadow-lg transition-shadow bg-white"
+              >
+                <div className="text-3xl mb-4">{solution.icon}</div>
+                <div className="text-xl font-medium mb-2">{solution.title}</div>
+                <div className="text-sm text-gray-600 mb-4">{solution.description}</div>
+                <div className="text-blue-600 font-medium">자세히 보기 →</div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EORA Integration Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-6">eora.life 상담 연동</h2>
+          <p className="mt-4 text-gray-700 mb-8 max-w-3xl mx-auto">
+            EORA 기반 AI 상담 플랫폼으로 감정 분석과 코칭을 경험하세요.
+          </p>
+          <a 
+            className="inline-block px-8 py-4 rounded-xl bg-black text-white font-medium hover:bg-gray-800 transition-colors" 
+            href="https://www.eora.life" 
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            상담 시작하기
+          </a>
+        </div>
+      </section>
+
+      {/* Latest News Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-semibold text-center mb-12">최신 소식</h2>
+          <div className="text-center">
+            <Link 
+              href="/blog"
+              className="inline-block px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:from-blue-700 hover:to-purple-700 transition-all"
+            >
+              블로그 & 뉴스 보기
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
 }
