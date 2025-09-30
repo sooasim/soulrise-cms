@@ -5,16 +5,29 @@ const base = process.env.NEXT_PUBLIC_CMS_URL;
 
 export async function fetchPublic(path: string, params: Record<string, any> = {}) {
   if (!base) {
+    const error = new Error("ENV MISSING: NEXT_PUBLIC_CMS_URL");
     console.error("ENV MISSING: NEXT_PUBLIC_CMS_URL");
-    return null;
+    throw error;
   }
+  
   const url = `${base}${path}`;
+  console.log("Fetching from CMS:", url, "with params:", params);
+  
   try {
-    const res = await axios.get(url, { params, timeout: 10000 });
+    const res = await axios.get(url, { 
+      params, 
+      timeout: 10000,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+    console.log("CMS Response:", res.status, res.data);
     return res.data;
   } catch (err: any) {
-    console.error("CMS FETCH ERROR:", url, err?.message || err);
-    return null; // 실패 시 null 반환(페이지가 부드럽게 빈 상태로 표시)
+    const errorMessage = err?.response?.data?.message || err?.message || "Unknown error";
+    console.error("CMS FETCH ERROR:", url, errorMessage);
+    throw new Error(`CMS 연결 실패: ${errorMessage}`);
   }
 }
 

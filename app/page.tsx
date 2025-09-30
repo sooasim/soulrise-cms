@@ -4,84 +4,175 @@ import { fetchPublic } from "@/lib/api";
 export default async function Page() {
   // CMS에서 최신 블로그 포스트 가져오기
   let latestPosts = [];
+  let cmsError = null;
+  
   try {
+    console.log("CMS URL:", process.env.NEXT_PUBLIC_CMS_URL);
     const data = await fetchPublic("/api/posts", { 
       populate: "*",
       "pagination[limit]": 3,
       "sort": "publishedAt:desc"
     });
     latestPosts = data?.data ?? [];
-  } catch (error) {
-    console.log("CMS 연결 실패:", error);
+    console.log("CMS 데이터 로드 성공:", latestPosts.length, "개 포스트");
+  } catch (error: any) {
+    console.error("CMS 연결 실패:", error);
+    cmsError = error?.message || "알 수 없는 오류";
   }
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-24 text-center bg-gradient-to-br from-blue-600 to-purple-700 text-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h1 className="text-4xl md:text-6xl font-semibold mb-6">
-            감정을 이해하는 AI, 현장에서 가치를 증명합니다
+      <section className="relative py-24 text-center bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800 text-white overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}></div>
+        </div>
+        
+        <div className="relative max-w-6xl mx-auto px-4">
+          <div className="mb-8">
+            <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
+              🚀 혁신적인 AI 솔루션
+            </span>
+          </div>
+          
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            <span className="block bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+              감정을 이해하는 AI
+            </span>
+            <span className="block text-yellow-300 text-3xl md:text-4xl lg:text-5xl mt-2">
+              소울라이즈
+            </span>
           </h1>
-          <p className="mt-6 text-lg mb-10 max-w-3xl mx-auto">
-            소울콜 · EORA · TAC-Link · 전술시계 — 투자와 고객을 위한 통합 홈페이지
+          
+          <p className="text-lg md:text-xl mb-10 max-w-4xl mx-auto leading-relaxed opacity-90">
+            <span className="font-semibold">소울콜 · EORA · TAC-Link · 전술시계</span>
+            <br />
+            현장에서 검증된 AI 기술로 투자와 고객을 위한 통합 솔루션을 제공합니다
           </p>
-          <div className="mt-10 flex gap-4 justify-center flex-wrap">
+          
+          <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link 
-              className="px-6 py-3 rounded-xl bg-white text-blue-600 font-medium hover:bg-gray-100 transition-colors" 
+              className="group px-8 py-4 rounded-2xl bg-white text-blue-600 font-semibold hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1" 
               href="/contact"
             >
-              데모 신청
+              <span className="flex items-center gap-2">
+                🎯 데모 신청하기
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
             </Link>
             <Link 
-              className="px-6 py-3 rounded-xl border-2 border-white text-white hover:bg-white hover:text-blue-600 transition-colors" 
+              className="group px-8 py-4 rounded-2xl border-2 border-white/50 text-white font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 backdrop-blur-sm" 
               href="/ir"
             >
-              투자 자료
+              <span className="flex items-center gap-2">
+                📊 투자 자료 보기
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </span>
             </Link>
+          </div>
+          
+          {/* Stats */}
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
+            {[
+              { number: "99%", label: "정확도" },
+              { number: "24/7", label: "모니터링" },
+              { number: "50+", label: "기업 고객" },
+              { number: "1M+", label: "분석 데이터" }
+            ].map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-yellow-300 mb-1">{stat.number}</div>
+                <div className="text-sm opacity-80">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Solutions Grid */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-semibold text-center mb-12">핵심 솔루션</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              핵심 솔루션
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              현장에서 검증된 AI 기술로 다양한 산업 분야의 문제를 해결합니다
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { 
                 title: "소울콜", 
                 description: "AI 음성 상담·세일즈", 
                 href: "/solutions/soulcall",
-                icon: "🎤"
+                icon: "🎤",
+                color: "from-pink-500 to-rose-500",
+                features: ["감정 분석", "음성 인식", "실시간 상담"]
               },
               { 
                 title: "EORA", 
                 description: "감정 기반 GAI", 
                 href: "/solutions/eora",
-                icon: "🧠"
+                icon: "🧠",
+                color: "from-blue-500 to-indigo-500",
+                features: ["감정 이해", "개인화", "AI 대화"]
               },
               { 
                 title: "TAC-Link", 
                 description: "스마트폰 전술 통신", 
                 href: "/solutions/tac-link",
-                icon: "📱"
+                icon: "📱",
+                color: "from-green-500 to-teal-500",
+                features: ["보안 통신", "전술 지원", "실시간 위치"]
               },
               { 
                 title: "전술시계", 
                 description: "임무 복귀·보안", 
                 href: "/products/tmw",
-                icon: "⌚"
+                icon: "⌚",
+                color: "from-purple-500 to-violet-500",
+                features: ["임무 추적", "보안 통신", "응급 상황"]
               },
             ].map((solution) => (
               <Link 
                 key={solution.title} 
                 href={solution.href} 
-                className="p-6 rounded-2xl border hover:shadow-lg transition-shadow bg-white"
+                className="group block p-8 rounded-3xl bg-white hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
               >
-                <div className="text-3xl mb-4">{solution.icon}</div>
-                <div className="text-xl font-medium mb-2">{solution.title}</div>
-                <div className="text-sm text-gray-600 mb-4">{solution.description}</div>
-                <div className="text-blue-600 font-medium">자세히 보기 →</div>
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${solution.color} flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  {solution.icon}
+                </div>
+                
+                <h3 className="text-2xl font-bold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors">
+                  {solution.title}
+                </h3>
+                
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  {solution.description}
+                </p>
+                
+                <div className="space-y-2 mb-6">
+                  {solution.features.map((feature, index) => (
+                    <div key={index} className="flex items-center text-sm text-gray-500">
+                      <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></div>
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="flex items-center text-blue-600 font-semibold group-hover:translate-x-2 transition-transform duration-300">
+                  자세히 보기 
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </div>
               </Link>
             ))}
           </div>
@@ -111,7 +202,13 @@ export default async function Page() {
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-semibold text-center mb-12">최신 소식</h2>
           
-          {latestPosts.length > 0 ? (
+          {cmsError ? (
+            <div className="text-center mb-12 p-6 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-red-600 mb-2">CMS 연결 오류가 발생했습니다.</p>
+              <p className="text-sm text-red-500">오류: {cmsError}</p>
+              <p className="text-sm text-gray-500 mt-2">CMS URL: {process.env.NEXT_PUBLIC_CMS_URL}</p>
+            </div>
+          ) : latestPosts.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {latestPosts.map((post: any) => {
                 const attributes = post.attributes;
@@ -145,7 +242,11 @@ export default async function Page() {
             </div>
           ) : (
             <div className="text-center mb-12">
-              <p className="text-gray-600 mb-6">CMS에서 최신 소식을 불러오는 중...</p>
+              <div className="p-6 bg-blue-50 border border-blue-200 rounded-lg">
+                <p className="text-blue-600 mb-2">CMS에서 최신 소식을 불러오는 중...</p>
+                <p className="text-sm text-gray-500">CMS URL: {process.env.NEXT_PUBLIC_CMS_URL || '설정되지 않음'}</p>
+                <p className="text-sm text-gray-500 mt-2">아직 게시된 포스트가 없거나 CMS 설정이 필요합니다.</p>
+              </div>
             </div>
           )}
           
