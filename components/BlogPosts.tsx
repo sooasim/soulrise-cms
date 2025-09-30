@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+// import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 interface BlogPost {
@@ -94,15 +94,13 @@ export default function BlogPosts({ limit }: BlogPostsProps) {
             {posts.map((post) => {
                 const a = post.attributes || {};
                 return (
-                    <Link
+                    <div
                         key={post.id}
-                        href={`/blog/${a.slug}`}
                         style={{
                             padding: '20px',
                             border: '1px solid #e0e0e0',
                             borderRadius: '10px',
                             boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-                            textDecoration: 'none',
                             color: 'inherit',
                             display: 'block'
                         }}
@@ -113,7 +111,12 @@ export default function BlogPosts({ limit }: BlogPostsProps) {
                         <p style={{ color: '#666', fontSize: '14px' }}>
                             {a.excerpt || "내용 미리보기가 없습니다."}
                         </p>
-                    </Link>
+                        {a.content && (
+                            <div style={{ marginTop: '10px', fontSize: '12px', color: '#888' }}>
+                                {a.content.length > 100 ? a.content.substring(0, 100) + '...' : a.content}
+                            </div>
+                        )}
+                    </div>
                 );
             })}
         </div>

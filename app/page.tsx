@@ -1,6 +1,6 @@
 // app/page.tsx
 import BlogPosts from "@/components/BlogPosts";
-import Link from "next/link";
+// import Link from "next/link";
 
 export default function HomePage() {
 
@@ -67,19 +67,18 @@ export default function HomePage() {
                     <h2 style={{ color: '#333', marginBottom: '30px' }}>최신 소식</h2>
                     <BlogPosts limit={3} />
                     <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                        <Link
-                            href="/blog"
+                        <div
                             style={{
                                 background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                                 color: 'white',
                                 padding: '12px 24px',
                                 borderRadius: '25px',
-                                textDecoration: 'none',
-                                fontSize: '16px'
+                                fontSize: '16px',
+                                display: 'inline-block'
                             }}
                         >
-                            모든 글 보기
-                        </Link>
+                            최신 소식
+                        </div>
                     </div>
                 </section>
 

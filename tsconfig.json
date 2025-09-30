@@ -1,55 +1,47 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "lib": [
-            "dom",
-            "dom.iterable",
-            "es6"
-        ],
-        "allowJs": true,
-        "skipLibCheck": true,
-        "strict": true,
-        "noEmit": true,
-        "esModuleInterop": true,
-        "module": "esnext",
-        "moduleResolution": "bundler",
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "jsx": "preserve",
-        "incremental": true,
-        "plugins": [
-            {
-                "name": "next"
-            }
-        ],
-        "baseUrl": ".",
-        "paths": {
-            "@/*": [
-                "./*"
-            ]
-        }
-    },
-    "include": [
-        // Include root files
-        "./",
-        // Include all ts files
-        "./**/*.ts",
-        // Include all js files
-        "./**/*.js",
-        // Force the JSON files in the src folder to be included
-        "src/**/*.json"
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "es6"
     ],
-    "exclude": [
-        "node_modules/",
-        "build/",
-        "dist/",
-        ".cache/",
-        ".tmp/",
-        // Do not include admin files in the server compilation
-        "src/admin/",
-        // Do not include test files
-        "**/*.test.*",
-        // Do not include plugins in the server compilation
-        "src/plugins/**"
-    ]
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "config/**/*",
+    "src/**/*",
+    "dist/**/*",
+    "build/**/*",
+    "**/*.test.*",
+    "**/*.spec.*"
+  ]
 }
