@@ -1,6 +1,6 @@
 // app/page.tsx
-import Link from "next/link";
 import BlogPosts from "@/components/BlogPosts";
+import Link from "next/link";
 
 export default function HomePage() {
 
