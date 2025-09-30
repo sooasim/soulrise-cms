@@ -7,6 +7,7 @@ const nextConfig = {
   },
   env: {
     NEXT_PUBLIC_CMS_URL: process.env.NEXT_PUBLIC_CMS_URL || 'https://soulrise-cms-production.up.railway.app',
+    NEXT_PUBLIC_CMS_ADMIN_URL: process.env.NEXT_PUBLIC_CMS_ADMIN_URL || 'https://soulrise-cms-production.up.railway.app/admin',
   }
 }
 
