@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 export default function AdminRedirect() {
-  const [cmsAdminUrl, setCmsAdminUrl] = useState('https://soulrise-cms-production.up.railway.app/admin');
+  const [cmsAdminUrl, setCmsAdminUrl] = useState('https://soulrise-cms-production-fc73.up.railway.app/admin');
   const [isRedirecting, setIsRedirecting] = useState(true);
 
   useEffect(() => {

@@ -1,6 +1,19 @@
 import Link from "next/link";
+import { fetchPublic } from "@/lib/api";
 
 export default async function Page() {
+  // CMS에서 최신 블로그 포스트 가져오기
+  let latestPosts = [];
+  try {
+    const data = await fetchPublic("/api/posts", { 
+      populate: "*",
+      "pagination[limit]": 3,
+      "sort": "publishedAt:desc"
+    });
+    latestPosts = data?.data ?? [];
+  } catch (error) {
+    console.log("CMS 연결 실패:", error);
+  }
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
@@ -97,12 +110,51 @@ export default async function Page() {
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-semibold text-center mb-12">최신 소식</h2>
+          
+          {latestPosts.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              {latestPosts.map((post: any) => {
+                const attributes = post.attributes;
+                return (
+                  <Link 
+                    key={post.id}
+                    href={`/blog/${attributes.slug}`}
+                    className="p-6 rounded-2xl border hover:shadow-lg transition-shadow bg-white group"
+                  >
+                    {attributes.coverImage?.data && (
+                      <div className="mb-4 overflow-hidden rounded-lg">
+                        <img 
+                          src={attributes.coverImage.data.attributes.url}
+                          alt={attributes.title}
+                          className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
+                        />
+                      </div>
+                    )}
+                    <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-600 transition-colors">
+                      {attributes.title}
+                    </h3>
+                    <p className="text-gray-600 mb-4 line-clamp-3">
+                      {attributes.excerpt}
+                    </p>
+                    <div className="text-sm text-gray-500">
+                      {new Date(attributes.publishedAt).toLocaleDateString('ko-KR')}
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="text-center mb-12">
+              <p className="text-gray-600 mb-6">CMS에서 최신 소식을 불러오는 중...</p>
+            </div>
+          )}
+          
           <div className="text-center">
             <Link 
               href="/blog"
               className="inline-block px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:from-blue-700 hover:to-purple-700 transition-all"
             >
-              블로그 & 뉴스 보기
+              모든 블로그 & 뉴스 보기
             </Link>
           </div>
         </div>
