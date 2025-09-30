@@ -3,7 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 
-const PORT = process.env.PORT || 3000;
+// Railway 환경 변수 처리
+const PORT = parseInt(process.env.PORT, 10) || 3000;
 const PUBLIC_DIR = path.join(__dirname, 'out');
 
 const mimeTypes = {
@@ -56,15 +57,15 @@ const server = http.createServer((req, res) => {
     const parsedUrl = url.parse(req.url);
     let pathname = parsedUrl.pathname;
 
-  // Handle root path
-  if (pathname === '/') {
-    pathname = '/index.html';
-  }
-  
-  // Handle /admin path (Railway healthcheck fallback)
-  if (pathname === '/admin') {
-    pathname = '/health.html';
-  }
+    // Handle root path
+    if (pathname === '/') {
+        pathname = '/index.html';
+    }
+
+    // Handle /admin path (Railway healthcheck fallback)
+    if (pathname === '/admin') {
+        pathname = '/health.html';
+    }
 
     // Handle .html extension for directories
     if (pathname.endsWith('/')) {
@@ -86,9 +87,11 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 SoulRise server is running on port ${PORT}`);
-    console.log(`📁 Serving files from: ${PUBLIC_DIR}`);
-    console.log(`🌐 Health check available at: http://localhost:${PORT}/health.html`);
+  console.log(`🚀 SoulRise server is running on port ${PORT}`);
+  console.log(`📁 Serving files from: ${PUBLIC_DIR}`);
+  console.log(`🌐 Health check available at: http://localhost:${PORT}/health.html`);
+  console.log(`🔧 Environment: PORT=${process.env.PORT}, NODE_ENV=${process.env.NODE_ENV}`);
+  console.log(`📊 Parsed PORT: ${PORT} (type: ${typeof PORT})`);
 });
 
 server.on('error', (err) => {
